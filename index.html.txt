@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Presente de Casamento 💍</title>
+
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f5f5f5;
+    padding: 20px;
+}
+
+.container {
+    max-width: 420px;
+    margin: auto;
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+img.produto {
+    width: 100%;
+    border-radius: 12px;
+    margin: 15px 0;
+}
+
+.valor {
+    font-size: 22px;
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+.progress {
+    background: #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 22px;
+    background: #4caf50;
+    color: white;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.pix-box {
+    background: #f1f1f1;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+button {
+    background: #00c853;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #00b34a;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Nosso Presente de Casamento 💍</h1>
+
+    <img src="produto.jpg" alt="Produto" class="produto">
+
+    <p>Estamos realizando um sonho 💕  
+    Caso queira nos presentear, qualquer valor é muito bem-vindo.</p>
+
+    <p class="valor">Meta: R$ 3.000,00</p>
+
+    <div class="progress">
+        <div class="progress-bar" id="barra">0%</div>
+    </div>
+
+    <div class="pix-box">
+        <p><strong>Chave Pix:</strong></p>
+        <p id="pix">SEU_PIX_AQUI</p>
+        <button onclick="copiarPix()">Copiar chave Pix</button>
+    </div>
+</div>
+
+<script>
+function copiarPix() {
+    const pix = document.getElementById("pix").innerText;
+    navigator.clipboard.writeText(pix);
+    alert("Chave Pix copiada!");
+}
+
+// Ajuste manual da porcentagem arrecadada
+let percentual = 0; // EX: 40 = 40%
+document.getElementById("barra").style.width = percentual + "%";
+document.getElementById("barra").innerText = percentual + "%";
+</script>
+
+</body>
+</html>
