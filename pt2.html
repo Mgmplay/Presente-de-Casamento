@@ -1,0 +1,37 @@
+<!DOCTYPE html> <html lang="pt-BR"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>Presente de Casamento Luxuoso</title> <style> /* Reset and base styles / * { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: 'Georgia', serif; background: linear-gradient(135deg, #f9f7f1, #fefcf9); color: #4a4a4a; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; } .container { background: #fff; max-width: 420px; width: 100%; border-radius: 16px; box-shadow: 0 12px 30px rgba(0,0,0,0.12); padding: 30px 25px 40px 25px; display: flex; flex-direction: column; align-items: center; color: #3b3b3b; } header { text-align: center; margin-bottom: 25px; } header h1 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 2.2rem; color: #bfa46f; / dourado suave / letter-spacing: 1.2px; margin-bottom: 6px; } header p { font-size: 1rem; font-style: italic; color: #7a6f4f; } .product-image { width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(191, 164, 111, 0.3); margin-bottom: 25px; } .product-image img { width: 100%; height: auto; display: block; object-fit: cover; } .description { font-size: 1.1rem; line-height: 1.5; color: #5a5a5a; text-align: center; margin-bottom: 30px; padding: 0 10px; } .goal { font-weight: 600; font-size: 1.3rem; color: #bfa46f; margin-bottom: 15px; text-align: center; } .progress-bar { width: 100%; height: 18px; background: #e6e1d9; border-radius: 9px; overflow: hidden; margin-bottom: 25px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); } .progress-fill { height: 100%; background: linear-gradient(90deg, #d4af37, #bfa46f); width: 0%; border-radius: 9px 0 0 9px; transition: width 1.2s ease-in-out; box-shadow: 0 0 8px rgba(191, 164, 111, 0.7); } .amounts { display: flex; justify-content: space-between; font-size: 0.9rem; color: #7a6f4f; margin-bottom: 30px; padding: 0 10px; } .pix-section { width: 100%; background: #fefcf9; border: 1.5px solid #bfa46f; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 6px 18px rgba(191, 164, 111, 0.25); } .pix-section h2 { font-family: 'Playfair Display', serif; color: #bfa46f; margin-bottom: 15px; font-size: 1.5rem; } .pix-code { font-family: monospace; background: #f4f1e7; padding: 12px 18px; border-radius: 8px; font-size: 1rem; user-select: all; color: #5a5a5a; margin-bottom: 20px; word-break: break-all; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); } .copy-btn { background: #bfa46f; border: none; color: #fff; font-weight: 600; font-size: 1rem; padding: 12px 25px; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 12px rgba(191, 164, 111, 0.6); transition: background-color 0.3s ease; user-select: none; } .copy-btn:hover { background-color: #d4af37; } .copy-btn:active { background-color: #a6852a; } footer { margin-top: 30px; font-size: 0.85rem; color: #a89e7e; text-align: center; font-style: italic; } @media (max-width: 480px) { .container { padding: 25px 20px 35px 20px; max-width: 100%; } header h1 { font-size: 1.8rem; } .description { font-size: 1rem; } .goal { font-size: 1.1rem; } .pix-section h2 { font-size: 1.3rem; } } </style> </head> <body> <main class="container"> <header> <h1>Presente de Casamento</h1> <p>Um presente especial para ajudar o casal a realizar um sonho</p> </header> <section class="product-image"> <!-- Substitua o src abaixo pela URL ou caminho da imagem do produto --> <img src="imagem-do-produto.jpg" alt="Presente de Casamento Luxuoso" /> </section> <section class="description"> <p>Este presente é uma forma elegante e carinhosa de contribuir para que o casal realize o sonho da vida a dois, com amor, confiança e sofisticação.</p> </section> <section class="goal">Meta: R$ 3.000,00</section> <section class="progress-bar" aria-label="Barra de progresso da meta"> <div class="progress-fill" id="progressFill"></div> </section> <section class="amounts"> <span id="collectedAmount">R$ 0,00</span> <span>R$ 3.000,00</span> </section> <section class="pix-section"> <h2>Pix para contribuição</h2> <div class="pix-code" id="pixCode">00020126360014BR.GOV.BCB.PIX0114chavepixdeexemplo520400005303986540510005802BR5925Nome do Casal6009Cidade00062070503**6304ABCD</div> <button class="copy-btn" id="copyBtn" aria-label="Copiar código Pix">Copiar Código Pix</button> </section> <footer> <p>Presente especial, elegante, confiável e feito com carinho.</p> </footer> </main>
+
+<script>
+    // Meta fixa
+    const goal = 3000.00;
+    // Valor inicial coletado (pode ser alterado para refletir valor real)
+    let collected = 0.00;
+
+    // Atualiza a barra de progresso e o valor exibido
+    function updateProgress() {
+        const progressFill = document.getElementById('progressFill');
+        const collectedAmount = document.getElementById('collectedAmount');
+        let progressPercent = (collected / goal) * 100;
+        if (progressPercent > 100) progressPercent = 100;
+        progressFill.style.width = progressPercent + '%';
+        collectedAmount.textContent = collected.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    // Função para copiar o código Pix
+    document.getElementById('copyBtn').addEventListener('click', () => {
+        const pixCode = document.getElementById('pixCode').textContent;
+        navigator.clipboard.writeText(pixCode).then(() => {
+            alert('Código Pix copiado para a área de transferência!');
+        }).catch(() => {
+            alert('Falha ao copiar o código Pix. Por favor, copie manualmente.');
+        });
+    });
+
+    // Inicializa a barra de progresso
+    updateProgress();
+
+    // Exemplo: Simular atualização do valor coletado (remova ou ajuste conforme necessário)
+    // collected = 1500.00;
+    // updateProgress();
+</script>
+
+</body> </html>
